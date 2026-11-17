@@ -27,7 +27,12 @@ def safe(s):return html.escape(str(s or ''))
 
 def start(msg):
     keyboard={'keyboard':[[{'text':'🏒 Открыть каталог BAUER','web_app':{'url':MINIAPP_URL}}]],'resize_keyboard':True,'is_persistent':True,'input_field_placeholder':'Откройте каталог и выберите экипировку'}
-    text='Привет! Здесь можно выбрать хоккейную экипировку BAUER по последнему складскому списку. Цены и остатки ориентировочные — каждую позицию подтвердим у менеджера после вашего запроса.\n\nНажмите кнопку «🏒 Открыть каталог BAUER» под полем ввода.\n\nКоманда /myid покажет ваш Telegram ID для настройки уведомлений.'
+    text=('🏒 Добро пожаловать в каталог хоккейной экипировки BAUER!\n\n'
+          'Здесь можно выбрать экипировку, посмотреть модели, размеры и цены.\n\n'
+          '📦 Товары доставляются из Китая. Средний срок доставки — 15–20 дней.\n'
+          '🚚 Отправка компанией СДЭК. Стоимость доставки оплачивается отдельно.\n\n'
+          '⚠️ Остатки указаны по последнему прайсу поставщика. Актуальное наличие и цену уточним у менеджера склада после вашего запроса.\n\n'
+          'Нажмите кнопку «🏒 Открыть каталог BAUER» под полем ввода.')
     send(msg['chat']['id'],text,reply_markup=keyboard)
 
 def fmt_variant(x):
@@ -79,10 +84,10 @@ def main():
                 else:
                     command=str(msg.get('text','')).split()[0].split('@')[0].lower() if msg.get('text') else ''
                     if command in ('/start','/catalog','/каталог'):start(msg)
-                    elif command in ('/myid','/id'):
-                        send(msg['chat']['id'],f'Ваш Telegram chat ID: {msg["chat"]["id"]}\nСкопируйте только цифры в ADMIN_CHAT_ID на Railway.')
+                    elif command in ('/myid','/id') and str(msg.get('chat',{}).get('id')) == ADMIN_CHAT_ID:
+                        send(msg['chat']['id'],f'Ваш Telegram chat ID: {msg["chat"]["id"]}')
                     elif command=='/help':
-                        send(msg['chat']['id'],'Напишите /start, чтобы открыть каталог BAUER. /myid — узнать свой Telegram ID. Наличие и цену подтверждаем после проверки у поставщика.')
+                        send(msg['chat']['id'],'Нажмите /start, чтобы открыть каталог BAUER. Наличие и цену подтверждаем после проверки у поставщика.')
         except KeyboardInterrupt:
             print('Остановлен');return
         except Exception as exc:
