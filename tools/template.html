@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="Удобный русскоязычный каталог экипировки BAUER. Цены и остатки по еженедельной ведомости. Наличие подтверждается перед заказом.">
+<title>BAUER — каталог экипировки</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{color-scheme:light;--bg:#f5f7fa;--paper:#fff;--text:#14202e;--ink:#101b2b;--muted:#697889;--line:#e4e9ef;--blue:#246bff;--softblue:#eaf1ff;--green:#14795f;--red:#bb3546;--navy:#0c182a;--shadow:0 9px 30px rgba(23,47,72,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font:14px/1.48 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text)}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #91b9ff;outline-offset:2px}button{touch-action:manipulation}a{color:inherit}.hide{display:none!important}.shell{max-width:1150px;margin:auto;padding:0 24px}.top{background:var(--navy);color:white;position:relative;overflow:hidden}.top:before{content:"";position:absolute;right:-125px;top:-210px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,#236cdf5c,transparent 65%);pointer-events:none}.top-inner{max-width:1150px;margin:auto;padding:22px 24px 40px;position:relative;z-index:1}.bar{display:flex;justify-content:space-between;gap:12px;align-items:center}.logo{font-size:23px;font-weight:950;letter-spacing:-1.7px;font-style:italic;line-height:1}.logo span{color:#73a5ff}.signature{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:10px;letter-spacing:1.1px;text-transform:uppercase;opacity:.65}.date-top{font-size:12px;color:#b8c9df;display:flex;align-items:center;gap:7px}.date-dot{width:7px;height:7px;display:inline-block;background:#60d9ab;border-radius:100%}.intro{display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:25px;margin-top:35px}.eyebrow{color:#80aefe;text-transform:uppercase;font-size:11px;font-weight:850;letter-spacing:1.7px;margin-bottom:14px}.intro h1{font-size:clamp(31px,5.2vw,57px);line-height:1.04;margin:0 0 16px;letter-spacing:-2px;font-weight:870}.intro h1 em{font-style:normal;color:#89b5ff}.intro p{max-width:575px;color:#adbed3;font-size:14px;margin:0;line-height:1.7}.intro-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:145px;position:relative}.hero-symbol{font-size:117px;filter:drop-shadow(0 18px 19px #0005);transform:rotate(-18deg)}.hero-outline{position:absolute;width:164px;height:164px;border:1px solid #5e89c356;border-radius:40px;transform:rotate(-24deg)}.notice{margin-top:25px;display:flex;align-items:flex-start;gap:12px;border:1px solid #314159;background:#172840;border-radius:14px;padding:12px 14px;color:#cddbea;font-size:12px;max-width:770px}.notice b{color:#fff}.notice-icon{font-size:18px}.main{padding-top:25px;padding-bottom:120px}.category-heading{display:flex;justify-content:space-between;align-items:end;margin:0 0 13px}.section-title{font-size:20px;font-weight:850;letter-spacing:-.5px}.section-sub{font-size:12px;color:var(--muted);margin-top:2px}.categories{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:28px}.cat{border:1px solid var(--line);background:#fff;padding:8px 8px 12px;border-radius:16px;text-align:left;box-shadow:0 3px 13px #0f274009;transition:transform .12s,border-color .12s;min-width:0}.cat:hover{transform:translateY(-2px)}.cat.selected{border:2px solid var(--blue);padding:7px 7px 11px;box-shadow:0 0 0 3px #c6d8ff}.cat .cat-photo{height:91px;background:linear-gradient(140deg,#e5eefc,#f5f7fb);border-radius:10px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.cat-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;opacity:0;z-index:1;transition:opacity .2s}.cat-photo .cat-emoji{position:relative;z-index:0}.cat-emoji{font-size:42px}.cat-name{font-size:11px;line-height:1.22;font-weight:800;min-height:28px}.cat-number{font-size:10px;color:var(--muted);margin-top:4px}.toolbar{background:white;border:1px solid var(--line);padding:14px;border-radius:18px;box-shadow:0 4px 17px #1a354709;display:grid;gap:12px}.search-wrap{display:flex;align-items:center;gap:9px;background:#f3f6fb;border:1px solid #e6ecf3;border-radius:11px;padding:0 12px}.search-wrap svg{flex:none;width:18px;height:18px;color:#8494a7}.search-wrap input{width:100%;height:44px;outline:0!important;border:0;background:transparent;color:var(--text);font-size:14px}.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:9px}.filters select{min-width:0;max-width:100%;height:41px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#283b50;padding:0 9px;font-size:12px}.reset{border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--muted);padding:0 12px;font-weight:700;font-size:12px}.bar-results{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:27px 0 12px}.count{font-size:17px;font-weight:850}.count small{font-size:12px;font-weight:500;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.product{border:1px solid var(--line);border-radius:17px;background:white;overflow:hidden;display:flex;flex-direction:column;min-width:0;box-shadow:0 3px 16px #20364709;transition:transform .13s,box-shadow .13s}.product:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.p-media{height:190px;background:radial-gradient(circle at 60% 50%,#fff 34%,#eef3fa 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}.p-media img{position:absolute;width:92%;height:92%;object-fit:contain;mix-blend-mode:multiply;opacity:0;transition:opacity .2s}.p-media .fallback{position:relative}.photo-label{position:absolute;right:7px;bottom:8px;background:#fffddfdf;color:#68768a;border:1px solid #e7eaf0;border-radius:8px;padding:3px 6px;font-size:9px;max-width:105px;text-align:center}.fallback{font-size:61px;opacity:.6}.p-year{position:absolute;left:9px;top:9px;background:#152844;color:#fff;border-radius:7px;padding:4px 7px;font-weight:800;font-size:10px}.fav{position:absolute;top:7px;right:7px;border:0;background:#ffffffeb;border-radius:9px;width:31px;height:31px;display:grid;place-items:center;font-size:19px;color:#8794a6}.fav.active{color:#f04f70}.p-content{padding:13px;flex:1;display:flex;flex-direction:column}.p-type{font-size:10px;letter-spacing:.4px;text-transform:uppercase;color:#77869b;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.p-name{font-size:13px;line-height:1.36;font-weight:800;min-height:37px;margin:6px 0 12px}.p-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}.pill{padding:3px 6px;border-radius:6px;background:#f0f4f9;color:#52647c;font-size:10px;font-weight:800}.p-foot{margin-top:auto}.p-price{font-size:20px;letter-spacing:-.5px;font-weight:870;white-space:nowrap}.p-price.unknown{font-size:13px;letter-spacing:0}.p-status{color:#687889;font-size:10px;margin:3px 0 10px}.open{width:100%;border:0;border-radius:10px;padding:10px;color:#fff;background:var(--blue);font-weight:800;font-size:12px}.loadmore{display:block;margin:25px auto 0;background:white;border:1px solid #ccd8e8;color:#174995;border-radius:11px;padding:13px 25px;font-weight:800}.empty{padding:48px 24px;border:1px dashed #cad3e0;background:white;text-align:center;border-radius:16px}.empty h3{font-size:17px}.sticky-cart{position:fixed;z-index:20;bottom:14px;left:50%;transform:translateX(-50%);border:0;border-radius:15px;background:var(--blue);box-shadow:0 15px 34px #234a9c66;color:white;padding:14px 20px;font-weight:850;display:flex;justify-content:center;align-items:center;gap:13px;width:min(510px,calc(100% - 24px))}.cart-count{background:#fff;color:#1c5edd;padding:2px 8px;border-radius:8px}.overlay{position:fixed;inset:0;z-index:60;background:#071423a8;display:none;align-items:flex-end;justify-content:center}.overlay.show{display:flex}.sheet{width:min(100%,610px);max-height:min(92dvh,940px);background:#fff;border-radius:23px 23px 0 0;box-shadow:0 -17px 50px #0003;overflow:auto;position:relative;padding-bottom:calc(20px + env(safe-area-inset-bottom))}.sheetbar{position:sticky;top:0;z-index:2;background:#fffffff4;backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--line)}.sheetbar h2{font-size:16px;margin:0}.close{background:#edf1f6;border:none;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;font-size:21px}.detail-art{display:flex;align-items:center;justify-content:center;height:215px;background:radial-gradient(circle,#fff,#eff4fb);position:relative}.detail-art img{height:95%;width:90%;object-fit:contain;mix-blend-mode:multiply;position:absolute;opacity:0;transition:opacity .2s}.detail-art .fallback{font-size:92px}.detail-head{padding:18px 19px 9px}.detail-head h2{font-size:20px;margin:5px 0}.muted{font-size:12px;color:var(--muted)}.subnote{font-size:11px;color:#6d7e91;line-height:1.55;background:#f4f7fc;padding:10px 13px;border-radius:10px;margin-top:12px}.variant-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 19px 15px}.variant-tools select{width:100%;height:38px;min-width:0;border:1px solid var(--line);border-radius:8px;background:white;font-size:12px;padding:0 6px}.variant-head{font-size:13px;font-weight:850;padding:8px 19px}.variants{padding:0 19px 20px;display:grid;gap:8px}.variant{border:1px solid #e1e7ef;border-radius:11px;padding:11px;display:flex;align-items:center;gap:10px;justify-content:space-between}.variant .desc{font-size:12px;font-weight:800}.variant .meta{color:var(--muted);font-size:10px;margin-top:5px}.variant .vp{font-weight:850;white-space:nowrap;text-align:right;font-size:13px}.add{margin-top:5px;padding:7px 12px;border:0;background:#e7f0ff;color:#175bd3;border-radius:8px;font-weight:850}.add.added{background:#e3f7ef;color:#116b50}.cart-body{padding:20px}.cart-item{display:grid;grid-template-columns:1fr auto;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}.cart-item b{font-size:12px}.cart-item small{font-size:11px;color:var(--muted);display:block;margin-top:5px}.cart-item button{border:0;background:none;color:#b54a58;font-size:20px}.summary{font-size:13px;color:var(--muted);padding:15px 0}.send{background:#2169f0;border:0;border-radius:12px;color:#fff;width:100%;padding:15px;font-weight:850}.secondary{border:1px solid #c9d7e5;border-radius:12px;color:#29496f;background:white;padding:12px;width:100%;font-weight:700;margin-top:8px}.footnote{text-align:center;color:#7c8b9e;font-size:11px;margin-top:34px;line-height:1.6}.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:110;background:#122238;color:#fff;padding:11px 16px;border-radius:10px;box-shadow:0 6px 25px #0004;font-size:12px;max-width:90%;text-align:center}.legend{font-size:11px;color:var(--muted)}.favsFilter{border:1px solid #d3ddeb;background:white;color:#53687d;border-radius:9px;font-size:12px;font-weight:750;padding:7px 11px}.favsFilter.selected{color:#d63560;border-color:#f2bfca;background:#fff1f5}
+@media(max-width:920px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.categories{grid-template-columns:repeat(3,minmax(0,1fr))}.cat .cat-photo{height:90px}}
+@media(max-width:620px){.shell{padding:0 12px}.top-inner{padding:15px 17px 25px}.intro{margin-top:29px;grid-template-columns:1fr}.intro h1{font-size:39px}.intro-visual{display:none}.notice{margin-top:19px}.main{padding-top:22px}.categories{gap:7px}.cat{border-radius:12px;padding:6px 6px 9px}.cat.selected{padding:5px 5px 8px}.cat .cat-photo{height:68px}.cat-name{font-size:10px;min-height:25px}.cat-number{font-size:9px}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filters .reset{height:41px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.p-media{height:151px}.p-content{padding:10px}.p-name{font-size:12px}.p-price{font-size:17px}.p-status{font-size:10px}.open{padding:9px 5px}.bar-results{margin-top:23px}.sheet{max-height:95dvh}.intro p{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="bar"><div class="logo">BAUER<span>.</span> <span class="signature">/ КАТАЛОГ</span></div><div class="date-top"><span class="date-dot"></span><span id="topDate"></span></div></div>
+    <div class="intro"><div><div class="eyebrow">Подбор хоккейной экипировки</div><h1>Найди свою<br><em>экипировку.</em></h1><p>Коньки, клюшки, защита, вратарская экипировка и аксессуары. Все варианты из складского списка на русском языке.</p></div><div class="intro-visual"><div class="hero-outline"></div><div class="hero-symbol">🏒</div></div></div>
+    <div class="notice"><span class="notice-icon">ⓘ</span><span><b>Остатки ориентировочные.</b> Список обновляется примерно раз в неделю, склад принадлежит поставщику. После вашего запроса мы отдельно проверим цену и наличие у менеджера. Это не резерв и не подтверждение заказа.</span></div>
+  </div>
+</header>
+<main class="shell main">
+  <div class="category-heading"><div><div class="section-title">Что ищете?</div><div class="section-sub">Выберите раздел или сразу введите модель</div></div><div class="legend" id="totalLabel"></div></div>
+  <div class="categories" id="categories"></div>
+  <div class="toolbar">
+    <div class="search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="search" type="search" placeholder="Например: Vapor, P92, 7.5, FIT2..." autocomplete="off" aria-label="Поиск"></div>
+    <div class="filters"><select id="subcategory" aria-label="Тип товара"><option value="">Все виды</option></select><select id="age" aria-label="Возраст"><option value="">Любой возраст</option><option>SR</option><option>INT</option><option>JR</option><option>YTH</option></select><select id="year" aria-label="Год прайса"><option value="">Все прайсы</option><option>2026</option><option>2025</option><option>2024</option></select><select id="sort" aria-label="Сортировка"><option value="default">По популярности</option><option value="price-low">Сначала дешевле</option><option value="price-high">Сначала дороже</option><option value="name">По названию</option></select><button class="reset" id="clear">Сбросить</button></div>
+  </div>
+  <div class="bar-results"><div class="count" id="resultCount"></div><button class="favsFilter" id="favsFilter" aria-pressed="false">♡ Избранное</button></div>
+  <div id="products" class="grid"></div>
+  <button class="loadmore hide" id="loadmore">Показать ещё</button>
+  <div class="footnote">Каталог составлен по складским спискам BAUER 2024–2026. Названия моделей сохранены из документов.<br>Фотографии иллюстративные там, где нет точного изображения модели. BAUER — товарный знак правообладателя.</div>
+</main>
+<button class="sticky-cart" id="cartButton" aria-label="Открыть запрос"><span>🛒 Мой запрос</span><span class="cart-count" id="basketCount">0</span><span>Открыть →</span></button>
+<div class="overlay" id="detailOverlay" role="dialog" aria-modal="true" aria-label="Выбор варианта"><div class="sheet"><div class="sheetbar"><h2>Выберите вариант</h2><button class="close" data-close="detail" aria-label="Закрыть">×</button></div><div id="detailBody"></div></div></div>
+<div class="overlay" id="cartOverlay" role="dialog" aria-modal="true" aria-label="Запрос"><div class="sheet"><div class="sheetbar"><h2>Мой запрос</h2><button class="close" data-close="cart" aria-label="Закрыть">×</button></div><div id="cartBody" class="cart-body"></div></div></div>
+<script id="catalog-payload" type="application/json">__CATALOG_JSON__</script>
+<script>
+'use strict';
+const raw = JSON.parse(document.getElementById('catalog-payload').textContent);
+const data = raw.rows;
+const pDate = raw.updated.split('-').reverse().join('.');
+const tg = window.Telegram && window.Telegram.WebApp;
+try { if(tg){ tg.ready(); tg.expand(); tg.setHeaderColor('#0c182a'); } } catch(e){}
+const priceFmt = n => new Intl.NumberFormat('ru-RU').format(n)+' ₽';
+const esc = s=>String(s==null?'':s).replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]));
+const cats=['Коньки','Клюшки','Защита игрока','Шлемы','Вратарская экипировка','Аксессуары'];
+const catNames={'Коньки':'Коньки','Клюшки':'Клюшки','Защита игрока':'Защита игрока','Шлемы':'Шлемы','Вратарская экипировка':'Вратарям','Аксессуары':'Аксессуары'};
+const catIcons={'Коньки':'⛸️','Клюшки':'🏒','Защита игрока':'🛡️','Шлемы':'🪖','Вратарская экипировка':'🥅','Аксессуары':'🎒'};
+// Photos are product illustrations from public manufacturer's/retail listings. Exact only for matching model + product type.
+// IMPORTANT: source pages and attribution are listed in PHOTO_SOURCES.txt; images hotlink, replace after getting reuse permission.
+const photos={
+ skate_flylite:'https://ca.bauer.com/cdn/shop/files/1064920_BTH25_SKATE_VAPOR_FLYLITE_SR_catalog-pair-FlyTi.png?v=1750087345',
+ skate_shadow:'https://puckstop.com/cdn/shop/files/BauerSupremeShadowSkates106358914.jpg?v=1717156267&width=1080',
+ skate_m40:'https://uk.bauer.com/cdn/shop/files/BauerSupremeM40IceHockeySkates10633065.jpg?v=1715606096&width=900',
+ skate_fly40:'https://www.bauer.com/cdn/shop/files/1064926_BTH25_SKATE_VAPOR_FLY40_SR_catalog-pair-FlyX.png?v=1749674094',
+ skate_fly30:'https://www.thehockeyshop.com/cdn/shop/files/bauer-hockey-skates-bauer-vapor-fly30-senior-hockey-skates-7-d-1190905297_720x.jpg?v=1768173864',
+ skate_x5:'https://www.sourceforsports.ca/cdn/shop/products/bab01b26ff3bf49306d75599f6b2a94f.jpg?v=1688120222',
+ skate_x4:'https://www.bauer.com/cdn/shop/files/x4sr__2_990x.png?v=1686159644',
+ skate_x:'https://www.sourceforsports.ca/cdn/shop/products/fb40dfcad64c0dd5d1336ba6e2ec09cd_d65edeec-6adb-4e9b-a2f2-d70f2d3f035e.jpg?v=1688207600',
+ stick_e4:'https://www.hockeymonkey.ca/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/b/a/bauer-hockey-stick-nexus-e4-int-inset1_1.jpg',
+ stick_sync:'https://www.hockeyjam.co.uk/media/catalog/product/cache/7/image/1800x/040ec09b1e35df139433887a97daa66f/b/a/bauer_nexus_sync_senior_composite_hockey_stick-4_7.png',
+ stick_hyperlite:'https://ca.bauer.com/cdn/shop/products/VAPORHYPERLITEGriptacStickSenior_aebdc6ca-7770-4cd9-9fe6-f228617aeb9c.png?v=1664485125',
+ stick_hyperlite2:'https://media.purehockey.com/images/q_auto%2Cf_auto%2Cfl_lossy%2Cc_lpad%2Cb_auto%2Cw_1000%2Ch_1000/products/62323/41/178443/bauer-vapor-hyperlite-2-stick-colors-senior-purple',
+ helm_55:'https://www.bauer.com/cdn/shop/files/reakt55combo__black_1.png?v=1718300376',
+ helm_85:'https://eu.bauer.com/cdn/shop/products/Re-Akt85__black_1.png?v=1669820554',
+ goalie_mask:'https://www.goaliemonkey.com/media/catalog/product/cache/b32e7142753984368b8a4b1edc19a338/6/8/688698644760-1_3.jpg',
+ goalie_pads:'https://ca.bauer.com/cdn/shop/files/1066916__white_4_1445x.png?v=1776436372',
+ goalie_glove:'https://www.bauer.com/cdn/shop/files/1067120__white_2_8ecbe9a4-c336-415d-a3b0-c92b2f5c9ad8_1445x.png?v=1776976716',
+ goalie_blocker:'https://media-www.sportchek.ca/product/div-01-hardgoods/dpt-10-hockey/sdpt-14-goalie-protective/334073452/bauer-gsx-blocker-sr-gen-ii-wht-fef58981-f1ce-4cad-822f-3d4505c38ec3-jpgrendition.jpg',
+ goalie_chest:'https://media.purehockey.com/images/q_auto%2Cf_auto%2Cfl_lossy%2Cc_lpad%2Cb_auto%2Cw_1000%2Ch_1000/products/41310/41/135077/bauer-elite-goalie-chest-protector-senior',
+ protection_elbow:'https://www.thehockeyshop.com/cdn/shop/files/elbow-pads-bauer-supreme-mach-senior-hockey-elbow-pads-1221722736_1800x1800.jpg?v=1772682490',
+ protection_shin:'https://static.insales-cdn.com/r/J51TV4pERF8/rs%3Afit%3A1000%3A0%3A1/q%3A100/plain/images/products/1/1169/751191185/41821708.jpg%40jpg',
+ protection_glove:'https://discounthockey.com/cdn/shop/files/1063728_BTH24_PROTECTIVE_GLOVE_BAUERX_SR_main_1200x1200.jpg?v=1726152337',
+ protection_shoulder:'https://houlesports.ca/cdn/shop/files/1064791_BTH25_PROTECTIVE_SHOULDER_VAPOR_FLY40_SR_catalog-front.jpg?v=1755017087',
+ protection_mach_glove:'https://www.hockeyworld.com/common/images/products/alt/large/bauer-supreme-mach-hockey-glove_3.jpg',
+ accessory_bag:'https://www.timeoutsports.ca/cdn/shop/files/Bauer-Hockey-Bags-Bauer-Core-Carry-Hockey-Bag-Senior.jpg?v=1725400402',
+ accessory_suspender:'https://www.skatersnetwork.com.au/cdn/shop/files/BAUER-SUSPENDERS.jpg?v=1732507004',
+ accessory_neck:'https://uk.bauer.com/cdn/shop/collections/BAUER_NLP21_NECK_GUARD_1.jpg?v=1712662351'
+};
+function findPhoto(g){
+ const m=g.model.toUpperCase();const t=g.subcategory.toLowerCase();const c=g.category;
+ if(c==='Коньки'){
+  if(m.includes('SUPREME SHADOW'))return [photos.skate_shadow,true];
+  if(m.includes('SUPREME M40'))return [photos.skate_m40,true];
+  if(m.includes('VAPOR FLYLITE'))return [photos.skate_flylite,true];
+  if(m.includes('VAPOR FLY40'))return [photos.skate_fly40,true];
+  if(m.includes('VAPOR FLY30')&&!t.includes('роликов'))return [photos.skate_fly30,true];
+  if(m.includes('VAPOR X5 PRO')&&!t.includes('роликов'))return [photos.skate_x5,!m.includes('NO RUNNER')];
+  if(m.includes('VAPOR X4')&&!t.includes('роликов'))return [photos.skate_x4,true];
+  if(m==='S23 BAUER X')return [photos.skate_x,true];
+  return [photos.skate_x,false];
+ }
+ if(c==='Клюшки'){
+  if(m.includes('NEXUS E4'))return [photos.stick_e4,true];
+  if(m.includes('NEXUS SYNC'))return [photos.stick_sync,true];
+  if(m.includes('VAPOR HYPERLITE2'))return [photos.stick_hyperlite2,true];
+  if(m==='S21 VAPOR HYPERLITE')return [photos.stick_hyperlite,true];
+  return [photos.stick_e4,false];
+ }
+ if(c==='Шлемы'){
+  if(m.includes('RE-AKT 55')&&m.includes('COMBO'))return [photos.helm_55,true];
+  if(m.includes('RE-AKT 85')&&!m.includes('COMBO'))return [photos.helm_85,true];
+  return [t.includes('решёт')||m.includes('COMBO')?photos.helm_55:photos.helm_85,false];
+ }
+ if(c==='Вратарская экипировка'){
+  if(t.includes('маск'))return [photos.goalie_mask,m.includes('930')];
+  if(t.includes('щитк'))return [photos.goalie_pads,false];
+  if(t.includes('ловуш'))return [photos.goalie_glove,false];
+  if(t.includes('блин'))return [photos.goalie_blocker,false];
+  if(t.includes('нагруд'))return [photos.goalie_chest,false];
+  return [photos.goalie_pads,false];
+ }
+ if(c==='Защита игрока'){
+  if(t.includes('краг'))return [m.includes('BAUER X')?photos.protection_glove:photos.protection_mach_glove,m.includes('BAUER X')];
+  if(t.includes('налокот'))return [photos.protection_elbow,m.includes('SUPREME MACH')];
+  if(t.includes('щитк'))return [photos.protection_shin,m.includes('SUPREME MACH')];
+  if(t.includes('нагруд'))return [photos.protection_shoulder,m.includes('VAPOR FLY40')];
+  return [photos.protection_shoulder,false];
+ }
+ if(m.includes('S21 BAUER CORE CARRY BAG'))return [photos.accessory_bag,true];
+ if(m==='BAUER SUSPENDERS')return [photos.accessory_suspender,true];
+ if(t.includes('шеи')||m.includes('NECK'))return [photos.accessory_neck,false];
+ return [photos.accessory_bag,false];
+}
+const groups=[];const gmap=new Map();
+for(const v of data){
+ const key=[v.category,v.subcategory,v.model,v.year].join('|');
+ if(!gmap.has(key)) {const g={key,category:v.category,subcategory:v.subcategory,model:v.model,year:v.year,variants:[]};groups.push(g);gmap.set(key,g)}
+ gmap.get(key).variants.push(v);
+}
+const years=[...new Set(data.map(x=>x.year))].sort((a,b)=>b-a);
+for(const g of groups){
+ g.ages=[...new Set(g.variants.map(x=>x.age))];
+ g.prices=g.variants.filter(x=>x.price!=null).map(x=>x.price);
+ g.minPrice=g.prices.length?Math.min(...g.prices):null;
+ g.maxPrice=g.prices.length?Math.max(...g.prices):null;
+ g.qty=g.variants.reduce((s,x)=>s+x.qty,0);
+ g.photo=findPhoto(g);
+}
+let activeCategory='', displayLimit=20, showFavs=false;
+const els={categories:document.getElementById('categories'),products:document.getElementById('products'),search:document.getElementById('search'),age:document.getElementById('age'),year:document.getElementById('year'),sub:document.getElementById('subcategory'),sort:document.getElementById('sort')};
+let basket={};let favorites=[];
+try{basket=JSON.parse(localStorage.getItem('bauer_basket_v1')||'{}');favorites=JSON.parse(localStorage.getItem('bauer_favs_v1')||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem('bauer_basket_v1',JSON.stringify(basket));localStorage.setItem('bauer_favs_v1',JSON.stringify(favorites))}catch(e){}};
+function countCategories(){return new Set(groups.map(g=>g.key)).size}
+function thumb(g){const [url,exact]=g.photo;return `<img loading="lazy" decoding="async" src="${esc(url)}" alt="${esc(exact?g.model:'Пример категории '+g.subcategory)}" onload="this.style.opacity='1';this.nextElementSibling.style.display='none'" onerror="this.style.display='none'"/><span class="fallback">${catIcons[g.category]}</span>${!exact?'<span class="photo-label">Фото категории</span>':''}`}
+function renderCategories(){els.categories.innerHTML=cats.map(c=>{const relevant=groups.filter(g=>g.category===c);const sample=relevant[0];const url=c==='Коньки'?photos.skate_fly40:c==='Клюшки'?photos.stick_sync:c==='Защита игрока'?photos.protection_shoulder:c==='Шлемы'?photos.helm_55:c==='Вратарская экипировка'?photos.goalie_pads:photos.accessory_bag;return `<button class="cat ${activeCategory===c?'selected':''}" data-cat="${esc(c)}" aria-pressed="${activeCategory===c}"><div class="cat-photo"><img alt="${esc(catNames[c])}" src="${esc(url)}" loading="lazy" onload="this.style.opacity='1';this.nextElementSibling.style.display='none'" onerror="this.style.display='none'"/><span class="cat-emoji">${catIcons[c]}</span></div><div class="cat-name">${esc(catNames[c])}</div><div class="cat-number">${relevant.length} моделей/типов</div></button>`}).join('');
+ els.categories.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{activeCategory=activeCategory===b.dataset.cat?'':b.dataset.cat;showFavs=false;displayLimit=20;renderCategories();populateSub();renderProducts()});}
+function populateSub(){const current=els.sub.value;const types=[...new Set(groups.filter(g=>!activeCategory||g.category===activeCategory).map(g=>g.subcategory))].sort((a,b)=>a.localeCompare(b,'ru'));els.sub.innerHTML='<option value="">Все виды</option>'+types.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('');if(types.includes(current))els.sub.value=current;}
+function matchesVariant(v){return (!els.age.value||v.age===els.age.value)&&(!els.year.value||String(v.year)===els.year.value)}
+function visibleGroups(){const q=els.search.value.toLowerCase().trim().replace(/ё/g,'е');return groups.filter(g=>{
+ if(activeCategory && g.category!==activeCategory)return false;
+ if(els.sub.value&&g.subcategory!==els.sub.value)return false;
+ if(showFavs&&!favorites.includes(g.key))return false;
+ const vs=g.variants.filter(matchesVariant);if(!vs.length)return false;
+ if(q){const text=[g.model,g.category,g.subcategory,...vs.flatMap(v=>[v.age,v.size,v.fit,v.color,v.flex,v.pattern,v.hand])].join(' ').toLowerCase().replace(/ё/g,'е');if(!q.split(/\s+/).every(z=>text.includes(z)))return false;}
+ return true}).sort((a,b)=>{const k=els.sort.value;if(k==='price-low')return (a.minPrice??Number.MAX_SAFE_INTEGER)-(b.minPrice??Number.MAX_SAFE_INTEGER);if(k==='price-high')return (b.maxPrice??-1)-(a.maxPrice??-1);if(k==='name')return a.model.localeCompare(b.model,'ru');return b.qty-a.qty;});}
+function renderProducts(){const matched=visibleGroups();const sliced=matched.slice(0,displayLimit);const fb=document.getElementById('favsFilter');fb.classList.toggle('selected',showFavs);fb.setAttribute('aria-pressed',String(showFavs));fb.textContent=(showFavs?'♥':'♡')+' Избранное ('+favorites.length+')';
+ document.getElementById('resultCount').innerHTML=`${matched.length} <small>позиций${showFavs?' в избранном':''}</small>`;
+ if(!matched.length){els.products.innerHTML='<div class="empty" style="grid-column:1/-1"><h3>Ничего не найдено</h3><p>Попробуйте другой запрос или сбросьте фильтры.</p></div>'}else{
+ els.products.innerHTML=sliced.map((g,i)=>{
+ const variants=g.variants.filter(matchesVariant),priced=variants.map(v=>v.price).filter(x=>x!=null),min=priced.length?Math.min(...priced):null,max=priced.length?Math.max(...priced):null;
+ return `<article class="product"><div class="p-media">${thumb(g)}<span class="p-year">Прайс ${g.year}</span><button class="fav ${favorites.includes(g.key)?'active':''}" data-fav="${i}" aria-label="В избранное">${favorites.includes(g.key)?'♥':'♡'}</button></div><div class="p-content"><div class="p-type">${esc(g.subcategory)}</div><div class="p-name">${esc(g.model)}</div><div class="p-tags">${[...new Set(variants.map(v=>v.age))].map(a=>`<span class="pill">${esc(a)}</span>`).join('')}<span class="pill">${variants.length} вар.</span></div><div class="p-foot"><div class="p-price ${min===null?'unknown':''}">${min===null?'Цена уточняется':(min===max?'': 'от ')+priceFmt(min)}</div><div class="p-status">По списку от ${pDate} · уточним</div><button class="open" data-open="${i}">Выбрать размер →</button></div></div></article>`}).join('');
+ els.products.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openDetail(sliced[Number(b.dataset.open)]));
+ els.products.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const key=sliced[Number(b.dataset.fav)].key;favorites=favorites.includes(key)?favorites.filter(x=>x!==key):[...favorites,key];save();renderProducts()});}
+ const more=document.getElementById('loadmore');more.classList.toggle('hide',matched.length<=displayLimit);more.onclick=()=>{displayLimit+=24;renderProducts()};
+}
+function variantLabel(v){return [v.age,v.size&&'размер '+v.size,v.fit&&'посадка '+v.fit,v.color&&'цвет '+v.color,v.flex&&'FLEX/высота '+v.flex,v.pattern&&'загиб '+v.pattern,v.hand&&'хват '+v.hand].filter(Boolean).join(' · ')}
+let detailGroup=null;
+function openDetail(g){detailGroup=g;document.getElementById('detailOverlay').classList.add('show');document.body.style.overflow='hidden';const [img,exact]=g.photo;
+ document.getElementById('detailBody').innerHTML=`<div class="detail-art"><img src="${esc(img)}" alt="${esc(g.model)}" onload="this.style.opacity='1';this.nextElementSibling.style.display='none'" onerror="this.style.display='none'"/><span class="fallback">${catIcons[g.category]}</span>${!exact?'<span class="photo-label">Фото категории, не конкретного товара</span>':''}</div><div class="detail-head"><div class="p-type">${esc(g.subcategory)} · прайс ${g.year}</div><h2>${esc(g.model)}</h2><div class="muted">Выберите точный размер / вариант. В запрос попадёт именно выбранная позиция.</div><div class="subnote">Остатки от ${pDate} — предварительные. Цена и возможность заказа подтверждаются после проверки у менеджера.</div></div><div class="variant-head">Фильтр вариантов</div><div class="variant-tools" id="vFilters"></div><div class="variant-head" id="variantCount"></div><div class="variants" id="variantList"></div>`;
+ const fields=[['age','Возраст'],['size','Размер'],['fit','Посадка'],['flex','FLEX/высота'],['pattern','Загиб'],['hand','Хват'],['color','Цвет']];
+ document.getElementById('vFilters').innerHTML=fields.filter(([k])=>new Set(g.variants.map(v=>v[k]).filter(Boolean)).size>1).map(([k,l])=>{const opts=[...new Set(g.variants.map(v=>v[k]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ru',{numeric:true}));return `<select data-field="${k}" aria-label="${l}"><option value="">${l}: все</option>${opts.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('')}</select>`}).join('');
+ document.querySelectorAll('#vFilters select').forEach(s=>s.onchange=renderVariants);renderVariants();}
+function renderVariants(){if(!detailGroup)return;const filters=[...document.querySelectorAll('#vFilters select')].map(s=>[s.dataset.field,s.value]).filter(x=>x[1]);const vs=detailGroup.variants.filter(v=>filters.every(([key,value])=>v[key]===value)&&matchesVariant(v));document.getElementById('variantCount').textContent='Доступные по списку варианты: '+vs.length;
+ document.getElementById('variantList').innerHTML=vs.length?vs.map(v=>`<div class="variant"><div><div class="desc">${esc(variantLabel(v))}</div><div class="meta">По списку: ${v.qty} шт. · наличие уточняется</div></div><div><div class="vp">${v.price==null?'Цена уточняется':priceFmt(v.price)}</div><button class="add ${basket[v.id]?'added':''}" data-add="${esc(v.id)}">${basket[v.id]?'✓ Выбрано':'+ В запрос'}</button></div></div>`).join(''):'<p class="muted">Вариантов нет. Попробуйте изменить фильтр.</p>';
+ document.querySelectorAll('#variantList [data-add]').forEach(b=>b.onclick=()=>{const v=detailGroup.variants.find(v=>v.id===b.dataset.add);if(basket[v.id])delete basket[v.id];else basket[v.id]={...v};save();updateBasket();renderVariants();});}
+function updateBasket(){document.getElementById('basketCount').textContent=Object.keys(basket).length;}
+function buildRequest(){const rows=Object.values(basket);return 'Здравствуйте! Хочу уточнить цену и наличие BAUER по следующим позициям (остатки по прайсу '+pDate+'):\n\n'+rows.map((v,i)=>`${i+1}. ${v.model}\n${v.subcategory}; ${variantLabel(v)}; ${v.price==null?'цена уточняется':priceFmt(v.price)}\nКод: ${v.id}`).join('\n\n')+'\n\nПожалуйста, проверьте доступность у менеджера склада перед подтверждением.';}
+function openCart(){document.getElementById('cartOverlay').classList.add('show');document.body.style.overflow='hidden';renderCart();}
+function renderCart(){const items=Object.values(basket);const b=document.getElementById('cartBody');if(!items.length){b.innerHTML='<div class="empty"><h3>Пока ничего не выбрано</h3><p>Найдите модель, откройте размеры и добавьте нужный вариант.</p><button class="secondary" id="backToCatalog">К каталогу</button></div>';document.getElementById('backToCatalog').onclick=()=>closeOverlay('cart');return;}
+ const known=items.filter(x=>x.price!=null);let sum=known.reduce((s,v)=>s+v.price,0);
+ b.innerHTML='<div class="subnote" style="margin:0 0 12px">Это запрос на проверку, а не заказ. Окончательное наличие и цена — после подтверждения поставщика.</div>'+items.map(v=>`<div class="cart-item"><div><b>${esc(v.model)}</b><small>${esc(variantLabel(v))}</small><small>${v.price==null?'Цена уточняется':priceFmt(v.price)}</small></div><button aria-label="Убрать" data-remove="${esc(v.id)}">×</button></div>`).join('')+`<div class="summary">Выбрано: <b>${items.length}</b> · Сумма по известным ценам: <b>${priceFmt(sum)}</b>${known.length<items.length?' · часть цен уточняется':''}</div><button class="send" id="sendRequest">📨 Отправить запрос на проверку</button><button class="secondary" id="copyRequest">Скопировать текст запроса</button><div class="subnote">Если Telegram не позволяет отправить заявку напрямую (например, каталог открыт по ссылке вне кнопки бота), используйте «Скопировать» и отправьте текст в личный чат.</div>`;
+ b.querySelectorAll('[data-remove]').forEach(x=>x.onclick=()=>{delete basket[x.dataset.remove];save();updateBasket();renderCart();});
+ document.getElementById('sendRequest').onclick=sendRequest;
+ document.getElementById('copyRequest').onclick=copyRequest;
+}
+function toast(message){const prev=document.querySelector('.toast');if(prev)prev.remove();const d=document.createElement('div');d.className='toast';d.textContent=message;document.body.appendChild(d);setTimeout(()=>d.remove(),3200);}
+async function copyRequest(){const t=buildRequest();try{await navigator.clipboard.writeText(t);toast('Текст заявки скопирован')}catch(e){const x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();try{document.execCommand('copy');toast('Заявка скопирована')}catch(err){toast('Не удалось скопировать. Откройте каталог по HTTPS.')}x.remove();}}
+function sendRequest(){const payload={kind:'bauer_request',updated:raw.updated,items:Object.values(basket).map(v=>({id:v.id,model:v.model,category:v.subcategory,age:v.age,size:v.size,fit:v.fit,color:v.color,flex:v.flex,pattern:v.pattern,hand:v.hand,price:v.price}))};
+ // Telegram WebApp.sendData is supported for ReplyKeyboard web_app launch (not Bot Menu launch).
+ if(tg && typeof tg.sendData==='function'){
+  try{const json=JSON.stringify(payload);if(new TextEncoder().encode(json).length<=4096){tg.sendData(json);return;}toast('Запрос слишком большой для Telegram — скопируйте текст.');return;}catch(e){toast('Отправка недоступна. Используйте кнопку «Скопировать текст запроса».');return;}}
+ copyRequest();toast('Каталог открыт вне Telegram. Заявка скопирована — отправьте её продавцу.');
+}
+function closeOverlay(which){document.getElementById(which==='cart'?'cartOverlay':'detailOverlay').classList.remove('show');if(!document.querySelector('.overlay.show'))document.body.style.overflow='';}
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeOverlay(b.dataset.close));
+document.querySelectorAll('.overlay').forEach(b=>b.addEventListener('click',e=>{if(e.target===b)closeOverlay(b.id==='cartOverlay'?'cart':'detail')}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOverlay('cart');closeOverlay('detail')}});
+document.getElementById('cartButton').onclick=openCart;document.getElementById('favsFilter').onclick=()=>{showFavs=!showFavs;displayLimit=20;renderProducts()};
+document.getElementById('clear').onclick=()=>{activeCategory='';showFavs=false;displayLimit=20;els.search.value='';els.age.value='';els.year.value='';els.sort.value='default';renderCategories();populateSub();els.sub.value='';renderProducts();};
+for(const el of [els.search,els.age,els.year,els.sub,els.sort])el.addEventListener(el===els.search?'input':'change',()=>{displayLimit=20;renderProducts()});
+document.getElementById('totalLabel').textContent=groups.length+' карточек';document.getElementById('topDate').textContent='Прайс от '+pDate;
+renderCategories();populateSub();renderProducts();updateBasket();
+</script>
+</body>
+</html>
